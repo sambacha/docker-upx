@@ -1,4 +1,6 @@
-FROM lalyos/alpine-build:edge
+FROM alpine:3.14.2
+
+RUN apk add --no-cache build-base
 
 RUN apk add -U zlib-dev xz-dev curl perl
 
@@ -20,7 +22,7 @@ ENV UPX_LZMADIR /
 VOLUME /release
 
 ENV UPX_UCLDIR=/ucl-${UCL_VER}
-ENV UPX_VER 3.91
+ENV UPX_VER 3.94
 RUN curl -LO http://upx.sourceforge.net/download/upx-${UPX_VER}-src.tar.bz2 \
     && bunzip2 upx-${UPX_VER}-src.tar.bz2  \
     && tar -xvf upx-${UPX_VER}-src.tar \
@@ -30,6 +32,3 @@ RUN curl -LO http://upx.sourceforge.net/download/upx-${UPX_VER}-src.tar.bz2 \
 
 # packs itself
 CMD /upx-${UPX_VER}-src/src/upx.out --best --ultra-brute -o/release/upx /upx-${UPX_VER}-src/src/upx.out
-
-
-
