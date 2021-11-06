@@ -1,0 +1,13 @@
+tests/
+test/
+.github/
+docker-compose.yml
+docker-compose.yaml
+.hadolint.yml
+.codecov.yml
+.env
+.cache
+coverage/
+build/
+dist/
+.git/
